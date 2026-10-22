@@ -32,7 +32,7 @@ I built a Python Payment Service that calculates a payment total.
 - Fee: $10
 - Total: $110
 
-**Version 2 — Local**
+**Version 2 — Local (changing fee to $5)**
 
 - Base amount: $100
 - Fee: $5
