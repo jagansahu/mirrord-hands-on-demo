@@ -28,17 +28,17 @@ I built a simple Python Payment Service that calculates a total payment amount b
 
 Version 1 — Deployed in Kubernetes
 
-Base amount: $100
-Fee: $10
-Total: $110
+-Base amount: $100
+-Fee: $10
+-Total: $110
 
 I then modified my local Python code, reducing the fee from $10 to $5, which changed the total from $110 to $105.
 
 Version 2 — Running Locally
 
-Base amount: $100
-Fee: $5
-Total: $105
+-Base amount: $100
+-Fee: $5
+-Total: $105
 
 What I Wanted to Test:
 
