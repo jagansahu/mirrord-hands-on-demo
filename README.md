@@ -1,15 +1,10 @@
 # mirrord Hands-On Demo
-
-A hands-on exploration of MetalBear's mirrord using Python, Docker, and Kubernetes.
+Playing around with MetalBear's mirrord using Python, Docker, and Kubernetes.
 
 ## Why I Built This
-
-I'm preparing for a BDR interview at MetalBear and wanted to understand the product from a developer's perspective.
-
-Rather than just reading the documentation, I built a small Payment Service and experimented with how mirrord changes the Kubernetes development workflow.
+I wanted to understand the product from a developer's perspective. I built a small Payment Service and experimented with how mirrord changes the Kubernetes development workflow. 
 
 ## Tech Stack
-
 - Python
 - Docker
 - Kubernetes (Kind)
@@ -17,7 +12,6 @@ Rather than just reading the documentation, I built a small Payment Service and 
 - kubectl
 
 ## The Problem
-
 In a traditional Kubernetes workflow, testing a code change often requires:
 
 1. Building a Docker image
@@ -44,20 +38,16 @@ I built a Python Payment Service that calculates a payment total.
 - Fee: $5
 - Total: $105
 
-I explored two mirrord modes:
+I explored two mirrord modes (Mirror Mode and Steal Mode):
 
 ### Mirror Mode
-
 Both the deployed Kubernetes service and my local Python application receive the request.
-
 The client receives the Kubernetes response ($110), while the local application calculates $105.
 
 ![Mirror Mode](screenshots/mirror-mode.png)
 
 ### Steal Mode
-
 mirrord redirects the request to my local Python application.
-
 The client receives the local response ($105) without requiring a new Kubernetes deployment.
 
 ![Steal Mode](screenshots/steal-mode.png)
