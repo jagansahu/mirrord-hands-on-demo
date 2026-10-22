@@ -63,7 +63,8 @@ Both versions process the request:
 - My local Python application calculates $105.
 - **The client (`curl`) still receives $110**, because the original Kubernetes service handles the response.
 
-*Screenshot: Mirror mode returning $110*
+<img width="1146" height="118" alt="unknown" src="https://github.com/user-attachments/assets/42f32531-5049-4ba9-aeb4-96cd315d8475" />
+
 
 This showed me how developers can debug modified code locally without changing the response users receive.
 
@@ -74,7 +75,7 @@ In steal mode, mirrord redirects the incoming request to my local Python applica
 - My local Python application calculates $105.
 - **The client (`curl`) receives $105**, even though Kubernetes still has the original $110 version deployed.
 
-*Screenshot: Steal mode returning $105*
+<img width="1146" height="118" alt="unknown" src="https://github.com/user-attachments/assets/3ef30a06-f418-4be2-8518-28b2b6590bf9" />
 
 This showed me how developers can test updated code against a Kubernetes environment without rebuilding or redeploying their application.
 
