@@ -44,7 +44,10 @@ I explored two mirrord modes (Mirror Mode and Steal Mode):
 Both the deployed Kubernetes service and my local Python application receive the request.
 The client receives the Kubernetes response ($110), while the local application calculates $105.
 
-![Mirror Mode](screenshots/mirror-mode.png)
+![Mirror Mode](<img width="1146" height="118" alt="unknown" src="https://github.com/user-attachments/assets/a49017dc-528d-4c62-8df1-0529ed25f78d" />
+)
+<img width="1146" height="118" alt="unknown" src="https://github.com/user-attachments/assets/e760fc9b-a917-42ff-ab82-9050832efdb8" />
+
 
 ### Steal Mode
 mirrord redirects the request to my local Python application.
@@ -60,19 +63,15 @@ The client receives the local response ($105) without requiring a new Kubernetes
 
 **Developer benefit:** Reduce the build-deploy-debug cycle and make development against Kubernetes environments easier.
 
-## BDR Perspective
+## What I learned.
 
-This experiment helped me understand the challenges engineering teams face when developing distributed applications.
+This experiment helped me understand the challenges engineering teams face when developing distributed applications. It also helped me understand the difference between mirror and steal mode (which is the main thing I wanted to understand as a developer).
 
 Potential customer pain points include:
 
 - Slow development cycles caused by repeated deployments
 - Difficulty debugging microservices locally
 - Complex Kubernetes development environments
-
-**A discovery question I'd ask:**
-
-"How much time does your engineering team spend rebuilding and redeploying services just to test small code changes?"
 
 ## What I'd Explore Next
 
