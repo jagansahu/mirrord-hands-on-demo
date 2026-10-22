@@ -44,8 +44,6 @@ I explored two mirrord modes (Mirror Mode and Steal Mode):
 Both the deployed Kubernetes service and my local Python application receive the request.
 The client receives the Kubernetes response ($110), while the local application calculates $105.
 
-![Mirror Mode](<img width="1146" height="118" alt="unknown" src="https://github.com/user-attachments/assets/a49017dc-528d-4c62-8df1-0529ed25f78d" />
-)
 <img width="1146" height="118" alt="unknown" src="https://github.com/user-attachments/assets/e760fc9b-a917-42ff-ab82-9050832efdb8" />
 
 
@@ -53,7 +51,8 @@ The client receives the Kubernetes response ($110), while the local application 
 mirrord redirects the request to my local Python application.
 The client receives the local response ($105) without requiring a new Kubernetes deployment.
 
-![Steal Mode](screenshots/steal-mode.png)
+<img width="1146" height="118" alt="unknown" src="https://github.com/user-attachments/assets/c217ffd9-65db-4120-8fed-050d496da2f5" />
+
 
 ## Key Takeaways
 
