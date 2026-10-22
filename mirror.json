@@ -1,0 +1,8 @@
+{
+  "target": "deployment/payment-service",
+  "feature": {
+    "network": {
+      "incoming": "mirror"
+    }
+  }
+}
