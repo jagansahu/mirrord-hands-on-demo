@@ -40,43 +40,49 @@ Version 2 — Running Locally
 - Fee: $5
 - Total: $105
 
-What I Wanted to Test:
+## What I Wanted to Test
 
-Normally, testing this change in Kubernetes would require rebuilding the Docker image and redeploying the updated Payment Service.
+Normally, if I change my Payment Service code, I need to rebuild the Docker image and redeploy it to Kubernetes to test the updated version.
 
-Instead, I wanted to see whether mirrord could let me test my modified local code against the existing Kubernetes environment without rebuilding or redeploying anything.
+I wanted to see if **mirrord could let me test my updated code locally without rebuilding or redeploying anything.**
 
-I tested two scenarios:
+To test this, I changed the payment fee from $10 to $5 in my local Python code.
 
-Mirror Mode: Could my local Payment Service process the same HTTP request as the Kubernetes service while the client still received the original $110 response?
+- **Kubernetes version (original):** $100 + $10 fee = **$110**
+- **Local version (modified):** $100 + $5 fee = **$105**
 
-Steal Mode: Could my local Payment Service take over the request and return the updated $105 response directly to the client?
+I then tested two mirrord modes to see what would happen when I sent the same HTTP request.
 
-The goal: Understand how mirrord helps developers test and debug code changes faster by eliminating repeated build-and-deploy cycles.
+### 1. Mirror Mode — Testing Without Changing the Client's Response
 
-I explored two mirrord modes (Mirror Mode and Steal Mode):
+In mirror mode, mirrord sends a copy of the incoming request to my local Python application.
 
-### Mirror Mode
-Both the deployed Kubernetes service and my local Python application receive the request.
-The client receives the Kubernetes response ($110), while the local application calculates $105.
+Both versions process the request:
 
-<img width="1146" height="118" alt="unknown" src="https://github.com/user-attachments/assets/e760fc9b-a917-42ff-ab82-9050832efdb8" />
+- Kubernetes calculates $110.
+- My local Python application calculates $105.
+- **The client (`curl`) still receives $110**, because the original Kubernetes service handles the response.
 
+*Screenshot: Mirror mode returning $110*
 
-### Steal Mode
-mirrord redirects the request to my local Python application.
-The client receives the local response ($105) without requiring a new Kubernetes deployment.
+This showed me how developers can debug modified code locally without changing the response users receive.
 
-<img width="1146" height="118" alt="unknown" src="https://github.com/user-attachments/assets/c217ffd9-65db-4120-8fed-050d496da2f5" />
+### 2. Steal Mode — Testing My Updated Code as if It Were Deployed
 
+In steal mode, mirrord redirects the incoming request to my local Python application instead of letting the Kubernetes version handle it.
 
-## Key Takeaways
+- My local Python application calculates $105.
+- **The client (`curl`) receives $105**, even though Kubernetes still has the original $110 version deployed.
 
-**Mirror mode:** Debug local code using copies of Kubernetes traffic without changing the client's response.
+*Screenshot: Steal mode returning $105*
 
-**Steal mode:** Route matching Kubernetes requests to locally running code and return its response.
+This showed me how developers can test updated code against a Kubernetes environment without rebuilding or redeploying their application.
 
-**Developer benefit:** Reduce the build-deploy-debug cycle and make development against Kubernetes environments easier.
+## Key Takeaway
+
+**Mirror mode lets developers observe and debug changes. Steal mode lets developers test their changes as if they were deployed.**
+
+Both can save developers time by reducing repeated Docker builds and Kubernetes deployments.
 
 ## What I learned.
 
