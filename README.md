@@ -24,19 +24,39 @@ mirrord helps developers test local code against Kubernetes environments without
 
 ## My Experiment
 
-I built a Python Payment Service that calculates a payment total.
+I built a simple Python Payment Service that calculates a total payment amount by adding a fee to a base amount.
 
-**Version 1 — Kubernetes**
+Version 1 — Deployed in Kubernetes
 
-- Base amount: $100
-- Fee: $10
-- Total: $110
+Base amount: $100
 
-**Version 2 — Local (changing fee to $5)**
+Fee: $10
 
-- Base amount: $100
-- Fee: $5
-- Total: $105
+Total: $110
+
+I then modified my local Python code, reducing the fee from $10 to $5, which changed the total from $110 to $105.
+
+Version 2 — Running Locally
+
+Base amount: $100
+
+Fee: $5
+
+Total: $105
+
+What I Wanted to Test
+
+Normally, testing this change in Kubernetes would require rebuilding the Docker image and redeploying the updated Payment Service.
+
+Instead, I wanted to see whether mirrord could let me test my modified local code against the existing Kubernetes environment without rebuilding or redeploying anything.
+
+I tested two scenarios:
+
+Mirror Mode: Could my local Payment Service process the same HTTP request as the Kubernetes service while the client still received the original $110 response?
+
+Steal Mode: Could my local Payment Service take over the request and return the updated $105 response directly to the client?
+
+The goal: Understand how mirrord helps developers test and debug code changes faster by eliminating repeated build-and-deploy cycles.
 
 I explored two mirrord modes (Mirror Mode and Steal Mode):
 
