@@ -87,7 +87,7 @@ Both can save developers time by reducing repeated Docker builds and Kubernetes 
 
 ## What I learned.
 
-This experiment helped me understand the challenges engineering teams face when developing distributed applications. It also helped me understand the difference between mirror and steal mode (which is the main thing I wanted to understand as a developer).
+This experiment helped me understand the challenges engineering teams face when developing distributed applications and how much time mirrord could potentially save me. It also helped me understand the difference between mirror and steal mode (which is the main thing I wanted to understand as a developer).
 
 Potential customer pain points include:
 
